@@ -29,7 +29,7 @@ This project is aligned with PLOS ONE’s requirements for **code availability a
 
 ---
 
-# 📁 Folder Structure
+## 📁 Folder Structure
 
 ```text
 UNet-LIDC-Segmentation/
@@ -72,7 +72,7 @@ cd UNet-LIDC-Segmentation
 pip install -r requirements.txt
 ```
 
-# 📁 Dataset Access (LIDC-IDRI)
+## 📁 Dataset Access (LIDC-IDRI)
 
 This repository does NOT redistribute any DICOM files.
 To obtain the LIDC-IDRI dataset:
@@ -109,7 +109,7 @@ This generates:
 All example images in data/examples/ are **anonymized PNG slices** created for demonstration.
 They contain no **DICOM metadata**.
 
-# 🧪 How to Run the Pipeline
+## 🧪 How to Run the Pipeline
 ## 1. Preprocessing and Mask Generation
 Uses PyLIDC to merge radiologists’ annotations:
 
@@ -152,7 +152,7 @@ Includes:
 * Error inspection
 * Qualitative side-by-side comparisons
 
-# Example Images
+## Example Images
 
 The folder:
 
@@ -165,7 +165,7 @@ contains:
 * optional predicted mask visualizations
 These files are safe to share since they do not include any DICOM headers.
 
-# Citation
+## Citation
 
 If you use this repository in your work, please cite the LIDC-IDRI dataset:
 
@@ -174,12 +174,12 @@ The Lung Image Database Consortium (LIDC) and Image Database Resource Initiative
 A Completed Reference Database of Lung Nodules on CT Scans.
 Medical Physics. 2011;38(2):915–931.
 
-# License
+## License
 
 This project is released under the MIT License.
 You are free to use, modify, and distribute this code with attribution.
 
-# Acknowledgments
+## Acknowledgments
 
 This project uses:
 * PyLIDC for consensus annotations
