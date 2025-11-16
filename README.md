@@ -31,28 +31,30 @@ This project is aligned with PLOS ONE’s requirements for **code availability a
 
 # 📁 Folder Structure
 
+```text
 UNet-LIDC-Segmentation/
 │
 ├── data/
-│ ├── README.md ← How to download LIDC-IDRI from TCIA
-│ └── examples/ ← Non-sensitive PNG slices
+│   ├── README.md                ← How to download LIDC-IDRI from TCIA
+│   └── examples/                ← Non-sensitive PNG slices (no DICOMs)
 │
 ├── notebooks/
-│ ├── preprocessing.ipynb ← PyLIDC masks & NumPy exports
-│ ├── training_unet.ipynb ← Training + validation
-│ └── evaluation_visualization.ipynb
+│   ├── preprocessing.ipynb      ← PyLIDC masks & NumPy exports
+│   ├── training_unet.ipynb      ← Training + validation
+│   └── evaluation_visualization.ipynb
 │
 ├── src/
-│ ├── dataloader.py
-│ ├── model_unet.py
-│ ├── metrics.py
-│ └── train.py
+│   ├── dataloader.py
+│   ├── model_unet.py
+│   ├── metrics.py
+│   └── train.py
 │
-├── results/ ← Generated plots & logs (optional)
+├── results/                     ← Generated plots & logs (optional)
 │
 ├── requirements.txt
 ├── LICENSE
 └── CITATION.cff
+
 
 
 ---
