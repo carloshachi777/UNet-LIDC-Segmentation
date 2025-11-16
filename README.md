@@ -81,6 +81,7 @@ https://www.cancerimagingarchive.net/collection/lidc-idri/
 2. Install the NBIA Data Retriever
 3. Download the collection:
 
+```text
 LIDC-IDRI/
   ├── LIDC-IDRI-0001
   ├── LIDC-IDRI-0002
