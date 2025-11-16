@@ -5,9 +5,10 @@ type: software
 
 authors:
   - family-names: Marino
-    given-names: C.
+    given-names: Carlos A.
     email: cmarino@pucp.pe
     affiliation: "CENTRUM PUCP"
+    # orcid: "https://orcid.org/0000-0002-6393-6346"
 
 repository-code: "https://github.com/carloshachi777/UNet-LIDC-Segmentation"
 
@@ -19,12 +20,13 @@ keywords:
   - U-Net
 
 license: MIT
+version: "1.0.0"
 
 preferred-citation:
   type: article
   title: "Automated Segmentation of Lung Nodules in CT Scans using 2D U-Net"
   authors:
     - family-names: Marino
-      given-names: C.
+      given-names: Carlos A.
   journal: "PLOS ONE (under revision)"
   year: 2025
