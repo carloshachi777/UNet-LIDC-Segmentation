@@ -110,7 +110,7 @@ All example images in data/examples/ are **anonymized PNG slices** created for d
 They contain no **DICOM metadata**.
 
 ## 🧪 How to Run the Pipeline
-## 1. Preprocessing and Mask Generation
+### 1. Preprocessing and Mask Generation
 Uses PyLIDC to merge radiologists’ annotations:
 
 ```bash
@@ -121,7 +121,7 @@ Outputs:
 - X_train.npy, Y_train.npy
 - X_val.npy, Y_val.npy
 
-## 2. Model Training
+### 2. Model Training
 
 ```bash
 notebooks/training_unet.ipynb
@@ -140,7 +140,7 @@ Outputs:
 * training logs
 * loss/metric plots
 
-## 3. Evaluation and Visualization
+### 3. Evaluation and Visualization
 
 ```bash
 notebooks/evaluation_visualization.ipynb
