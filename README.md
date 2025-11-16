@@ -35,22 +35,24 @@ UNet-LIDC-Segmentation/
 │
 ├── data/
 │ ├── README.md ← How to download LIDC-IDRI from TCIA
-│ ├── examples/ ← Non-sensitive PNG slices for visualization
+│ └── examples/ ← Non-sensitive PNG slices
 │
 ├── notebooks/
-│ ├── preprocessing.ipynb ← PyLIDC consensus masks & numpy exports
-│ ├── training_unet.ipynb ← U-Net training and validation
-│ ├── evaluation_visualization.ipynb
+│ ├── preprocessing.ipynb ← PyLIDC masks & NumPy exports
+│ ├── training_unet.ipynb ← Training + validation
+│ └── evaluation_visualization.ipynb
 │
 ├── src/
 │ ├── dataloader.py
 │ ├── model_unet.py
 │ ├── metrics.py
-│ ├── train.py
+│ └── train.py
 │
-├── requirements.txt ← For pip install
-├── LICENSE ← MIT License
-└── CITATION.cff ← Citation metadata (optional)
+├── results/ ← Generated plots & logs (optional)
+│
+├── requirements.txt
+├── LICENSE
+└── CITATION.cff
 
 
 ---
