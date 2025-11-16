@@ -1,1 +1,30 @@
-{"nbformat":4,"nbformat_minor":0,"metadata":{"colab":{"provenance":[],"authorship_tag":"ABX9TyMztof9FjYcwb1A0htHzW17"},"kernelspec":{"name":"python3","display_name":"Python 3"},"language_info":{"name":"python"}},"cells":[{"cell_type":"code","source":["import os\n","\n","os.makedirs(\"/content/drive/MyDrive/UNet-LIDC-Segmentation\", exist_ok=True)\n","os.makedirs(\"/content/drive/MyDrive/UNet-LIDC-Segmentation/data\", exist_ok=True)\n","os.makedirs(\"/content/drive/MyDrive/UNet-LIDC-Segmentation/notebooks\", exist_ok=True)\n","os.makedirs(\"/content/drive/MyDrive/UNet-LIDC-Segmentation/src\", exist_ok=True)\n","os.makedirs(\"/content/drive/MyDrive/UNet-LIDC-Segmentation/results\", exist_ok=True)\n"],"metadata":{"id":"ZRXP6-B0gVge","executionInfo":{"status":"ok","timestamp":1763245085945,"user_tz":300,"elapsed":8,"user":{"displayName":"Meghan Marino","userId":"00712667968514930479"}}},"execution_count":1,"outputs":[]},{"cell_type":"code","execution_count":2,"metadata":{"colab":{"base_uri":"https://localhost:8080/"},"id":"XyMaIaEhwnYv","executionInfo":{"status":"ok","timestamp":1763245089202,"user_tz":300,"elapsed":7,"user":{"displayName":"Meghan Marino","userId":"00712667968514930479"}},"outputId":"6bb1afea-76c9-4430-9200-36abfc9885a4"},"outputs":[{"output_type":"stream","name":"stdout","text":["Writing /content/drive/MyDrive/UNet-LIDC-Segmentation/CITATION.cff\n"]}],"source":["%%writefile /content/drive/MyDrive/UNet-LIDC-Segmentation/CITATION.cff\n","cff-version: 1.2.0\n","title: \"UNet-LIDC-Segmentation\"\n","message: \"If you use this code, please cite the dataset and this repository.\"\n","type: software\n","\n","authors:\n","  - family-names: Marino\n","    given-names: C.\n","    email: cmarino@pucp.pe\n","    affiliation: \"CENTRUM PUCP\"\n","\n","repository-code: \"https://github.com/carloshachi777/UNet-LIDC-Segmentation\"\n","\n","keywords:\n","  - medical imaging\n","  - deep learning\n","  - CT segmentation\n","  - LIDC-IDRI\n","  - U-Net\n","\n","license: MIT\n","\n","preferred-citation:\n","  type: article\n","  title: \"Automated Segmentation of Lung Nodules in CT Scans using 2D U-Net\"\n","  authors:\n","    - family-names: Marino\n","      given-names: C.\n","  journal: \"PLOS ONE (under revision)\"\n","  year: 2025\n"]}]}
+cff-version: 1.2.0
+title: "UNet-LIDC-Segmentation"
+message: "If you use this code, please cite the dataset and this repository."
+type: software
+
+authors:
+  - family-names: Marino
+    given-names: C.
+    email: cmarino@pucp.pe
+    affiliation: "CENTRUM PUCP"
+
+repository-code: "https://github.com/carloshachi777/UNet-LIDC-Segmentation"
+
+keywords:
+  - medical imaging
+  - deep learning
+  - CT segmentation
+  - LIDC-IDRI
+  - U-Net
+
+license: MIT
+
+preferred-citation:
+  type: article
+  title: "Automated Segmentation of Lung Nodules in CT Scans using 2D U-Net"
+  authors:
+    - family-names: Marino
+      given-names: C.
+  journal: "PLOS ONE (under revision)"
+  year: 2025
