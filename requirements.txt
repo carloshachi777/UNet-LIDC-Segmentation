@@ -1,1 +1,12 @@
-{"nbformat":4,"nbformat_minor":0,"metadata":{"colab":{"provenance":[],"authorship_tag":"ABX9TyNg7aBpiizUYMp3xoVRfT3k"},"kernelspec":{"name":"python3","display_name":"Python 3"},"language_info":{"name":"python"}},"cells":[{"cell_type":"code","source":["import os\n","\n","os.makedirs(\"/content/drive/MyDrive/UNet-LIDC-Segmentation\", exist_ok=True)\n","os.makedirs(\"/content/drive/MyDrive/UNet-LIDC-Segmentation/data\", exist_ok=True)\n","os.makedirs(\"/content/drive/MyDrive/UNet-LIDC-Segmentation/notebooks\", exist_ok=True)\n","os.makedirs(\"/content/drive/MyDrive/UNet-LIDC-Segmentation/src\", exist_ok=True)\n","os.makedirs(\"/content/drive/MyDrive/UNet-LIDC-Segmentation/results\", exist_ok=True)"],"metadata":{"id":"deNw4mU8WJb9","executionInfo":{"status":"ok","timestamp":1763240886032,"user_tz":300,"elapsed":5,"user":{"displayName":"Meghan Marino","userId":"00712667968514930479"}}},"execution_count":1,"outputs":[]},{"cell_type":"code","execution_count":2,"metadata":{"id":"RfOFCZeOvoia","colab":{"base_uri":"https://localhost:8080/"},"executionInfo":{"status":"ok","timestamp":1763240911502,"user_tz":300,"elapsed":10,"user":{"displayName":"Meghan Marino","userId":"00712667968514930479"}},"outputId":"c2bd57df-5410-4231-d16b-6661f0b340c5"},"outputs":[{"output_type":"stream","name":"stdout","text":["Writing /content/drive/MyDrive/UNet-LIDC-Segmentation/requirements.txt\n"]}],"source":["%%writefile /content/drive/MyDrive/UNet-LIDC-Segmentation/requirements.txt\n","numpy\n","scipy\n","matplotlib\n","pydicom\n","pylidc\n","scikit-learn\n","tensorflow==2.15.0\n","keras\n","tqdm\n","pillow\n","seaborn\n","pandas\n"]}]}
+numpy
+scipy
+matplotlib
+pydicom
+pylidc
+scikit-learn
+tensorflow==2.15.0
+keras
+tqdm
+pillow
+seaborn
+pandas
