@@ -6,6 +6,7 @@ To reproduce experiments:
 2. Download using the **NBIA Data Retriever**
 3. Place folders under:
 
+```text
 UNet-LIDC-Segmentation/data/LIDC-IDRI/
 ├── LIDC-IDRI-0001/
 ├── LIDC-IDRI-0002/
