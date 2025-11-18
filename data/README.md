@@ -11,7 +11,7 @@ UNet-LIDC-Segmentation/data/LIDC-IDRI/
 ├── LIDC-IDRI-0001/
 ├── LIDC-IDRI-0002/
 └── ...
-
+```
 ---
 4. Run:
 
