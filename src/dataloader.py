@@ -1,1 +1,62 @@
-{"nbformat":4,"nbformat_minor":0,"metadata":{"colab":{"provenance":[],"authorship_tag":"ABX9TyMNy0xa0zgxwr10+ybU+GOg"},"kernelspec":{"name":"python3","display_name":"Python 3"},"language_info":{"name":"python"}},"cells":[{"cell_type":"code","execution_count":null,"metadata":{"id":"GaPUg0zQn_0D"},"outputs":[],"source":["%%writefile /content/drive/MyDrive/UNet-LIDC-Segmentation/src/dataloader.py\n","import numpy as np\n","from tensorflow.keras.utils import Sequence\n","\n","\n","class SliceDataGenerator(Sequence):\n","    \"\"\"\n","    Balanced data generator for 2D CT slices and masks.\n","\n","    Expects:\n","      images: np.ndarray [N, H, W]\n","      masks:  np.ndarray [N, H, W]\n","      pos_indices, neg_indices: arrays of indices for slices with / without nodules\n","    \"\"\"\n","\n","    def __init__(\n","        self,\n","        images,\n","        masks,\n","        pos_indices,\n","        neg_indices,\n","        batch_size=16,\n","        shuffle=True,\n","    ):\n","        self.images = images\n","        self.masks = masks\n","        self.pos_indices = np.array(pos_indices)\n","        self.neg_indices = np.array(neg_indices)\n","        self.batch_size = batch_size\n","        self.shuffle = shuffle\n","        self.on_epoch_end()\n","\n","    def __len__(self):\n","        return int(np.floor((len(self.pos_indices) + len(self.neg_indices)) / self.batch_size))\n","\n","    def on_epoch_end(self):\n","        if self.shuffle:\n","            np.random.shuffle(self.pos_indices)\n","            np.random.shuffle(self.neg_indices)\n","\n","    def __getitem__(self, idx):\n","        # half positive, half negative (or as close as possible)\n","        half = self.batch_size // 2\n","\n","        pos_sel = self.pos_indices[\n","            (idx * half) % len(self.pos_indices) : ((idx + 1) * half) % len(self.pos_indices)\n","        ]\n","        neg_sel = self.neg_indices[\n","            (idx * half) % len(self.neg_indices) : ((idx + 1) * half) % len(self.neg_indices)\n","        ]\n","\n","        batch_indices = np.concatenate([pos_sel, neg_sel])\n","        np.random.shuffle(batch_indices)\n","\n","        batch_x = self.images[batch_indices].astype(\"float32\")\n","        batch_y = self.masks[batch_indices].astype(\"float32\")\n","\n","        # add channel dimension\n","        batch_x = np.expand_dims(batch_x, axis=-1)\n","        batch_y = np.expand_dims(batch_y, axis=-1)\n","\n","        return batch_x, batch_y\n"]}]}
+%%writefile /content/drive/MyDrive/UNet-LIDC-Segmentation/src/dataloader.py
+import numpy as np
+from tensorflow.keras.utils import Sequence
+
+
+class SliceDataGenerator(Sequence):
+    """
+    Balanced data generator for 2D CT slices and masks.
+
+    Expects:
+      images: np.ndarray [N, H, W]
+      masks:  np.ndarray [N, H, W]
+      pos_indices, neg_indices: arrays of indices for slices with / without nodules
+    """
+
+    def __init__(
+        self,
+        images,
+        masks,
+        pos_indices,
+        neg_indices,
+        batch_size=16,
+        shuffle=True,
+    ):
+        self.images = images
+        self.masks = masks
+        self.pos_indices = np.array(pos_indices)
+        self.neg_indices = np.array(neg_indices)
+        self.batch_size = batch_size
+        self.shuffle = shuffle
+        self.on_epoch_end()
+
+    def __len__(self):
+        return int(np.floor((len(self.pos_indices) + len(self.neg_indices)) / self.batch_size))
+
+    def on_epoch_end(self):
+        if self.shuffle:
+            np.random.shuffle(self.pos_indices)
+            np.random.shuffle(self.neg_indices)
+
+    def __getitem__(self, idx):
+        # half positive, half negative (or as close as possible)
+        half = self.batch_size // 2
+
+        pos_sel = self.pos_indices[
+            (idx * half) % len(self.pos_indices) : ((idx + 1) * half) % len(self.pos_indices)
+        ]
+        neg_sel = self.neg_indices[
+            (idx * half) % len(self.neg_indices) : ((idx + 1) * half) % len(self.neg_indices)
+        ]
+
+        batch_indices = np.concatenate([pos_sel, neg_sel])
+        np.random.shuffle(batch_indices)
+
+        batch_x = self.images[batch_indices].astype("float32")
+        batch_y = self.masks[batch_indices].astype("float32")
+
+        # add channel dimension
+        batch_x = np.expand_dims(batch_x, axis=-1)
+        batch_y = np.expand_dims(batch_y, axis=-1)
+
+        return batch_x, batch_y
