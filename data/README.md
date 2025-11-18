@@ -1,1 +1,39 @@
-{"nbformat":4,"nbformat_minor":0,"metadata":{"colab":{"provenance":[],"authorship_tag":"ABX9TyNVBfE+TuQEfTNK+wJ0juUV"},"kernelspec":{"name":"python3","display_name":"Python 3"},"language_info":{"name":"python"}},"cells":[{"cell_type":"code","source":["import os\n","\n","os.makedirs(\"/content/drive/MyDrive/UNet-LIDC-Segmentation\", exist_ok=True)\n","os.makedirs(\"/content/drive/MyDrive/UNet-LIDC-Segmentation/data\", exist_ok=True)\n","os.makedirs(\"/content/drive/MyDrive/UNet-LIDC-Segmentation/notebooks\", exist_ok=True)\n","os.makedirs(\"/content/drive/MyDrive/UNet-LIDC-Segmentation/src\", exist_ok=True)\n","os.makedirs(\"/content/drive/MyDrive/UNet-LIDC-Segmentation/results\", exist_ok=True)"],"metadata":{"id":"0gf48enGbEOm","executionInfo":{"status":"ok","timestamp":1763242169675,"user_tz":300,"elapsed":6,"user":{"displayName":"Meghan Marino","userId":"00712667968514930479"}}},"execution_count":2,"outputs":[]},{"cell_type":"code","execution_count":4,"metadata":{"colab":{"base_uri":"https://localhost:8080/"},"id":"0fx4_Wr5Wk2q","executionInfo":{"status":"ok","timestamp":1763242327142,"user_tz":300,"elapsed":44,"user":{"displayName":"Meghan Marino","userId":"00712667968514930479"}},"outputId":"587eff3e-1845-4b48-96f6-33b4a988169f"},"outputs":[{"output_type":"stream","name":"stdout","text":["Overwriting /content/drive/MyDrive/UNet-LIDC-Segmentation/data/README.md\n"]}],"source":["%%writefile /content/drive/MyDrive/UNet-LIDC-Segmentation/data/README.md\n","# LIDC-IDRI Dataset Access\n","\n","This repository does **not** include DICOM files from LIDC-IDRI.\n","To reproduce experiments:\n","\n","1. Create a free TCIA account\n","   https://www.cancerimagingarchive.net/collection/lidc-idri/\n","2. Download using the **NBIA Data Retriever**\n","3. Place folders under:\n","\n","UNet-LIDC-Segmentation/data/LIDC-IDRI/\n","├── LIDC-IDRI-0001/\n","├── LIDC-IDRI-0002/\n","└── ...\n","\n","4. Run:\n","\n","notebooks/preprocessing.ipynb\n","\n","\n","This will:\n","- load DICOMs\n","- generate PyLIDC consensus masks\n","- export numpy arrays for training/validation\n","\n","---\n","\n","## Example Images\n","\n","The folder `examples/` contains **non-sensitive PNG slices only**.\n","These images contain **no metadata** and cannot be used to reconstruct DICOM files.\n","\n","---\n","\n","## Citation\n","\n","LIDC-IDRI must be cited as:\n","\n","> Armato SG, McLennan G, Bidaut L, et al.\n","> The Lung Image Database Consortium (LIDC) and Image Database Resource Initiative (IDRI).\n","> *Medical Physics*. 2011;38(2):915–931.\n"]}]}
+This repository does **not** include DICOM files from LIDC-IDRI.
+To reproduce experiments:
+
+1. Create a free TCIA account
+   https://www.cancerimagingarchive.net/collection/lidc-idri/
+2. Download using the **NBIA Data Retriever**
+3. Place folders under:
+
+UNet-LIDC-Segmentation/data/LIDC-IDRI/
+├── LIDC-IDRI-0001/
+├── LIDC-IDRI-0002/
+└── ...
+
+4. Run:
+
+notebooks/preprocessing.ipynb
+
+
+This will:
+- load DICOMs
+- generate PyLIDC consensus masks
+- export numpy arrays for training/validation
+
+---
+
+## Example Images
+
+The folder `examples/` contains **non-sensitive PNG slices only**.
+These images contain **no metadata** and cannot be used to reconstruct DICOM files.
+
+---
+
+## Citation
+
+LIDC-IDRI must be cited as:
+
+> Armato SG, McLennan G, Bidaut L, et al.
+> The Lung Image Database Consortium (LIDC) and Image Database Resource Initiative (IDRI).
+> *Medical Physics*. 2011;38(2):915–931.
