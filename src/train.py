@@ -1,1 +1,89 @@
-{"nbformat":4,"nbformat_minor":0,"metadata":{"colab":{"provenance":[],"authorship_tag":"ABX9TyNrLk3WheYzxrDm1vWhp40z"},"kernelspec":{"name":"python3","display_name":"Python 3"},"language_info":{"name":"python"}},"cells":[{"cell_type":"code","execution_count":null,"metadata":{"id":"7TnWzE1aoiPx"},"outputs":[],"source":["%%writefile /content/drive/MyDrive/UNet-LIDC-Segmentation/src/train.py\n","import os\n","import numpy as np\n","import tensorflow as tf\n","from tensorflow.keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, EarlyStopping\n","\n","from model_unet import build_unet\n","from metrics import dice_coefficient, dice_loss, binary_iou\n","from dataloader import SliceDataGenerator\n","\n","\n","def load_data(data_dir):\n","    \"\"\"\n","    Expects preprocessed NumPy arrays:\n","      images_train.npy, masks_train.npy, pos_idx_train.npy, neg_idx_train.npy, etc.\n","    Adjust names to match your preprocessing notebook.\n","    \"\"\"\n","    x_train = np.load(os.path.join(data_dir, \"images_train.npy\"))\n","    y_train = np.load(os.path.join(data_dir, \"masks_train.npy\"))\n","    x_val = np.load(os.path.join(data_dir, \"images_val.npy\"))\n","    y_val = np.load(os.path.join(data_dir, \"masks_val.npy\"))\n","\n","    pos_idx_train = np.load(os.path.join(data_dir, \"pos_idx_train.npy\"))\n","    neg_idx_train = np.load(os.path.join(data_dir, \"neg_idx_train.npy\"))\n","\n","    return x_train, y_train, x_val, y_val, pos_idx_train, neg_idx_train\n","\n","\n","def main():\n","    data_dir = \"data/preprocessed\"  # update if needed\n","    os.makedirs(\"results/models\", exist_ok=True)\n","\n","    x_train, y_train, x_val, y_val, pos_idx_train, neg_idx_train = load_data(data_dir)\n","\n","    train_gen = SliceDataGenerator(\n","        x_train,\n","        y_train,\n","        pos_idx_train,\n","        neg_idx_train,\n","        batch_size=16,\n","        shuffle=True,\n","    )\n","\n","    # simple non-balanced generator for validation\n","    x_val = np.expand_dims(x_val, -1).astype(\"float32\")\n","    y_val = np.expand_dims(y_val, -1).astype(\"float32\")\n","\n","    model = build_unet(input_shape=(256, 256, 1))\n","    model.compile(\n","        optimizer=tf.keras.optimizers.Adam(learning_rate=1e-4),\n","        loss=dice_loss,\n","        metrics=[dice_coefficient, binary_iou, \"accuracy\"],\n","    )\n","\n","    checkpoint = ModelCheckpoint(\n","        \"results/models/unet_lidc_best.h5\",\n","        monitor=\"val_dice_coefficient\",\n","        mode=\"max\",\n","        save_best_only=True,\n","        verbose=1,\n","    )\n","    reduce_lr = ReduceLROnPlateau(\n","        monitor=\"val_dice_coefficient\",\n","        factor=0.5,\n","        patience=5,\n","        verbose=1,\n","        min_lr=1e-6,\n","    )\n","    early_stop = EarlyStopping(\n","        monitor=\"val_dice_coefficient\",\n","        patience=10,\n","        mode=\"max\",\n","        restore_best_weights=True,\n","        verbose=1,\n","    )\n","\n","    model.fit(\n","        train_gen,\n","        validation_data=(x_val, y_val),\n","        epochs=50,\n","        callbacks=[checkpoint, reduce_lr, early_stop],\n","        verbose=1,\n","    )\n","\n","    model.save(\"results/models/unet_lidc_final.h5\")\n","\n","\n","if __name__ == \"__main__\":\n","    main()\n"]}]}
+%%writefile /content/drive/MyDrive/UNet-LIDC-Segmentation/src/train.py
+import os
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, EarlyStopping
+
+from model_unet import build_unet
+from metrics import dice_coefficient, dice_loss, binary_iou
+from dataloader import SliceDataGenerator
+
+
+def load_data(data_dir):
+    """
+    Expects preprocessed NumPy arrays:
+      images_train.npy, masks_train.npy, pos_idx_train.npy, neg_idx_train.npy, etc.
+    Adjust names to match your preprocessing notebook.
+    """
+    x_train = np.load(os.path.join(data_dir, "images_train.npy"))
+    y_train = np.load(os.path.join(data_dir, "masks_train.npy"))
+    x_val = np.load(os.path.join(data_dir, "images_val.npy"))
+    y_val = np.load(os.path.join(data_dir, "masks_val.npy"))
+
+    pos_idx_train = np.load(os.path.join(data_dir, "pos_idx_train.npy"))
+    neg_idx_train = np.load(os.path.join(data_dir, "neg_idx_train.npy"))
+
+    return x_train, y_train, x_val, y_val, pos_idx_train, neg_idx_train
+
+
+def main():
+    data_dir = "data/preprocessed"  # update if needed
+    os.makedirs("results/models", exist_ok=True)
+
+    x_train, y_train, x_val, y_val, pos_idx_train, neg_idx_train = load_data(data_dir)
+
+    train_gen = SliceDataGenerator(
+        x_train,
+        y_train,
+        pos_idx_train,
+        neg_idx_train,
+        batch_size=16,
+        shuffle=True,
+    )
+
+    # simple non-balanced generator for validation
+    x_val = np.expand_dims(x_val, -1).astype("float32")
+    y_val = np.expand_dims(y_val, -1).astype("float32")
+
+    model = build_unet(input_shape=(256, 256, 1))
+    model.compile(
+        optimizer=tf.keras.optimizers.Adam(learning_rate=1e-4),
+        loss=dice_loss,
+        metrics=[dice_coefficient, binary_iou, "accuracy"],
+    )
+
+    checkpoint = ModelCheckpoint(
+        "results/models/unet_lidc_best.h5",
+        monitor="val_dice_coefficient",
+        mode="max",
+        save_best_only=True,
+        verbose=1,
+    )
+    reduce_lr = ReduceLROnPlateau(
+        monitor="val_dice_coefficient",
+        factor=0.5,
+        patience=5,
+        verbose=1,
+        min_lr=1e-6,
+    )
+    early_stop = EarlyStopping(
+        monitor="val_dice_coefficient",
+        patience=10,
+        mode="max",
+        restore_best_weights=True,
+        verbose=1,
+    )
+
+    model.fit(
+        train_gen,
+        validation_data=(x_val, y_val),
+        epochs=50,
+        callbacks=[checkpoint, reduce_lr, early_stop],
+        verbose=1,
+    )
+
+    model.save("results/models/unet_lidc_final.h5")
+
+
+if __name__ == "__main__":
+    main()
