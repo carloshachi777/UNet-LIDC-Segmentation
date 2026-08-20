@@ -4,7 +4,7 @@ This directory contains instructions for obtaining and preparing the **Lung Imag
 
 The repository does **not** redistribute the original LIDC-IDRI DICOM images.
 
----
+
 
 ## Dataset Source
 
@@ -34,7 +34,7 @@ UNet-LIDC-Segmentation/
 
 The `LIDC-IDRI/` directory is excluded from version control and should **not** be committed to GitHub.
 
----
+
 
 ## Cohort Construction
 
@@ -57,7 +57,7 @@ The cohort-selection seed remains fixed across the reference experiment and the 
 
 Patient-level partitioning is performed separately to ensure that **no patient contributes scans or slices to more than one of the training, validation, or test partitions**.
 
----
+
 
 ## Preprocessing and Consensus Masks
 
@@ -80,7 +80,7 @@ The preprocessing pipeline performs the main data-preparation steps required for
 
 A slice is considered **nodule-positive** when its consensus reference mask contains at least one foreground pixel.
 
----
+
 
 ## Patient-Level Data Partitioning
 
@@ -113,7 +113,7 @@ RUN_SEED = 2
 
 Seed-specific partition information is stored separately so that each experimental run can be independently reproduced and audited.
 
----
+
 
 ## Seed-Sensitivity Splits
 
@@ -146,7 +146,7 @@ metadata/
 └── seed42/
 ```
 
----
+
 
 ## Local Data vs. Repository Data
 
@@ -174,7 +174,7 @@ The repository instead provides lightweight reproducibility artifacts such as:
 
 This allows the experimental design to be audited without redistributing the original imaging dataset.
 
----
+
 
 ## Example Images
 
@@ -236,7 +236,7 @@ Seed-sensitivity experiments use:
 03B_Seed_Sensitivity_Evaluation.ipynb
 ```
 
----
+
 
 ## Data Availability
 
@@ -244,7 +244,7 @@ The LIDC-IDRI dataset is publicly available from **The Cancer Imaging Archive (T
 
 This repository provides the code and reproducibility artifacts necessary to reconstruct the experimental pipeline but does not redistribute the original LIDC-IDRI DICOM data.
 
----
+
 
 ## Citation
 
@@ -256,7 +256,7 @@ Use of LIDC-IDRI should cite the original dataset publication:
 
 Please also follow the current citation and data-usage requirements specified by TCIA when using the LIDC-IDRI collection.
 
----
+
 
 ## Research Use
 
