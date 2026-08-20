@@ -392,7 +392,7 @@ The raw imaging data should remain local and should **not** be committed to GitH
 
 ---
 
-## 🧪 Reproducing the Reference Experiment
+## Reproducing the Reference Experiment
 
 ### Step 1 — Preprocessing
 
@@ -541,7 +541,7 @@ Raw LIDC-IDRI DICOM images are **not** included.
 
 ---
 
-## 🖼️ Example Images
+## Example Images
 
 The directory:
 
@@ -587,7 +587,7 @@ LIDC-IDRI data should be obtained directly from TCIA and handled according to th
 
 ---
 
-## 📚 Citation
+## Citation
 
 If you use this repository, please cite the associated manuscript when available.
 
