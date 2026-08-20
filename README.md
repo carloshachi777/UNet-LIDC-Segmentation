@@ -78,7 +78,7 @@ The cohort itself remains fixed while the patient partition, TensorFlow/Python/N
 
 ---
 
-## 🧠 Experimental Design
+## Experimental Design
 
 ### Fixed Cohort
 
@@ -135,7 +135,7 @@ Each seed is stored in a separate output directory to prevent accidental overwri
 
 ---
 
-## 🫁 Ground-Truth Mask Generation
+## Ground-Truth Mask Generation
 
 Radiologist annotations are processed using **PyLIDC**.
 
@@ -189,7 +189,7 @@ Sampling is performed from the complete training positive and negative pools rat
 
 ---
 
-## 🧮 Loss Function
+## Loss Function
 
 The model is optimized using **Focal Tversky loss**, which is designed to address severe class imbalance and permits explicit control of false-positive and false-negative penalties.
 
@@ -217,7 +217,7 @@ The larger penalty assigned to false negatives reflects the importance of detect
 
 ---
 
-## 🎯 Validation-Based Threshold Selection
+## Validation-Based Threshold Selection
 
 The probability threshold used to convert predicted probability maps into binary segmentation masks is **not selected using the test set**.
 
@@ -324,7 +324,7 @@ Large imaging data and derived NumPy arrays are intentionally excluded from vers
 
 ---
 
-## 🛠 Installation
+## Installation
 
 ### Option A — Google Colab
 
@@ -363,7 +363,7 @@ on a local Apple Silicon workstation.
 
 ---
 
-## 📁 Dataset Access — LIDC-IDRI
+## Dataset Access — LIDC-IDRI
 
 The LIDC-IDRI imaging data are publicly available through **The Cancer Imaging Archive (TCIA)**.
 
@@ -475,7 +475,7 @@ The evaluation pipeline performs:
 
 ---
 
-## 🌱 Reproducing the Seed-Sensitivity Experiments
+## Reproducing the Seed-Sensitivity Experiments
 
 The seed-sensitivity analysis is implemented using:
 
@@ -519,7 +519,7 @@ This prevents results from one experimental run from overwriting another.
 
 ---
 
-## 📦 Reproducibility Artifacts
+## Reproducibility Artifacts
 
 The repository is intended to provide the non-imaging artifacts required to reproduce and audit the experiments.
 
@@ -562,7 +562,7 @@ These images contain no DICOM headers or DICOM metadata.
 
 ---
 
-## ⚠️ Important Interpretation Note
+## Important Interpretation Note
 
 This repository implements a **baseline research pipeline**, not a clinical diagnostic system.
 
@@ -574,7 +574,7 @@ In particular, the experiments illustrate that apparently strong validation perf
 
 ---
 
-## 🔐 Data and Privacy
+## Data and Privacy
 
 The repository does not contain:
 
@@ -606,7 +606,7 @@ CITATION.cff
 
 ---
 
-## 📄 License
+## License
 
 This project is released under the **MIT License**.
 
@@ -614,7 +614,7 @@ You may use, modify, and distribute the source code in accordance with the terms
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 This project uses:
 
