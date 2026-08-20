@@ -154,7 +154,7 @@ The distinction is used for balanced training batch construction.
 
 ---
 
-## ⚖️ Balanced Training Strategy
+## Balanced Training Strategy
 
 Lung nodule segmentation presents substantial foreground/background imbalance because the majority of CT slices contain no nodule pixels.
 
@@ -231,7 +231,7 @@ Threshold-selection results for each seed are saved as reproducibility artifacts
 
 ---
 
-## 📊 Evaluation Protocol
+## Evaluation Protocol
 
 Evaluation distinguishes between two complementary populations.
 
@@ -264,7 +264,7 @@ Where confidence intervals are reported, bootstrap resampling is therefore perfo
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```text
 UNet-LIDC-Segmentation/
