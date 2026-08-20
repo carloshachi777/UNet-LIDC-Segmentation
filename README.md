@@ -25,7 +25,7 @@ The repository supports reproduction of the main experimental workflow, includin
 - Seed-sensitivity experiments
 - Qualitative prediction visualization
 
----
+
 
 ## 🔍 Project Overview
 
@@ -76,7 +76,7 @@ RUN_SEED = 2
 
 The cohort itself remains fixed while the patient partition, TensorFlow/Python/NumPy random state, model initialization, and balanced sampling sequence vary according to the run seed.
 
----
+
 
 ## Experimental Design
 
@@ -133,7 +133,7 @@ These runs are used to examine the sensitivity of the baseline to stochastic var
 
 Each seed is stored in a separate output directory to prevent accidental overwriting of results.
 
----
+
 
 ## Ground-Truth Mask Generation
 
@@ -152,7 +152,7 @@ negative slices
 
 The distinction is used for balanced training batch construction.
 
----
+
 
 ## Balanced Training Strategy
 
@@ -187,7 +187,7 @@ Therefore, each epoch processes:
 
 Sampling is performed from the complete training positive and negative pools rather than permanently discarding negative slices.
 
----
+
 
 ## Loss Function
 
@@ -215,7 +215,7 @@ The experimental configuration uses:
 
 The larger penalty assigned to false negatives reflects the importance of detecting small nodule regions.
 
----
+
 
 ## Validation-Based Threshold Selection
 
@@ -229,7 +229,7 @@ This separation prevents test-set information from influencing model or threshol
 
 Threshold-selection results for each seed are saved as reproducibility artifacts.
 
----
+
 
 ## Evaluation Protocol
 
@@ -262,7 +262,7 @@ Because multiple slices may originate from the same patient, slices cannot be as
 
 Where confidence intervals are reported, bootstrap resampling is therefore performed at the **patient level**, preserving within-patient clustering.
 
----
+
 
 ## Repository Structure
 
@@ -322,7 +322,7 @@ UNet-LIDC-Segmentation/
 
 Large imaging data and derived NumPy arrays are intentionally excluded from version control.
 
----
+
 
 ## Installation
 
@@ -361,7 +361,7 @@ NumPy 1.26.4
 
 on a local Apple Silicon workstation.
 
----
+
 
 ## Dataset Access — LIDC-IDRI
 
@@ -390,7 +390,7 @@ data/
 
 The raw imaging data should remain local and should **not** be committed to GitHub.
 
----
+
 
 ## Reproducing the Reference Experiment
 
@@ -413,7 +413,7 @@ The preprocessing pipeline performs:
 - slice-level metadata generation
 - identification of positive and negative slices
 
----
+
 
 ### Step 2 — Reference Training Run
 
@@ -449,7 +449,7 @@ results/seed42/
 figures/seed42/
 ```
 
----
+
 
 ### Step 3 — Evaluation
 
@@ -473,7 +473,7 @@ The evaluation pipeline performs:
 - patient-clustered bootstrap analysis
 - qualitative visualization
 
----
+
 
 ## Reproducing the Seed-Sensitivity Experiments
 
@@ -517,7 +517,6 @@ models/seed42/
 
 This prevents results from one experimental run from overwriting another.
 
----
 
 ## Reproducibility Artifacts
 
@@ -539,7 +538,7 @@ These may include:
 
 Raw LIDC-IDRI DICOM images are **not** included.
 
----
+
 
 ## Example Images
 
@@ -560,7 +559,7 @@ prediction_examples.png
 
 These images contain no DICOM headers or DICOM metadata.
 
----
+
 
 ## Important Interpretation Note
 
@@ -572,7 +571,7 @@ Performance can vary substantially across patient partitions and random seeds. T
 
 In particular, the experiments illustrate that apparently strong validation performance does not necessarily imply stable generalization across alternative patient partitions.
 
----
+
 
 ## Data and Privacy
 
@@ -585,7 +584,7 @@ The repository does not contain:
 
 LIDC-IDRI data should be obtained directly from TCIA and handled according to the terms associated with the dataset.
 
----
+
 
 ## Citation
 
@@ -604,7 +603,7 @@ Citation metadata for this repository are also provided in:
 CITATION.cff
 ```
 
----
+
 
 ## License
 
@@ -612,7 +611,7 @@ This project is released under the **MIT License**.
 
 You may use, modify, and distribute the source code in accordance with the terms of the license.
 
----
+
 
 ## Acknowledgments
 
@@ -626,7 +625,7 @@ This project uses:
 
 We thank the LIDC-IDRI investigators, participating radiologists, and TCIA for making this research resource publicly available.
 
----
+
 
 ## Research Purpose
 
