@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: "UNet-LIDC-Segmentation"
+title: "Automated segmentation of lung nodules in CT scans using a U-Net deep learning model: A study based on the LIDC-IDRI dataset"
 message: "If you use this code, please cite the dataset and this repository."
 type: software
 
@@ -24,9 +24,9 @@ version: "1.0.0"
 
 preferred-citation:
   type: article
-  title: "Automated Segmentation of Lung Nodules in CT Scans using 2D U-Net"
+  title: "Automated segmentation of lung nodules in CT scans using a U-Net deep learning model: A study based on the LIDC-IDRI dataset"
   authors:
     - family-names: Marino
       given-names: Carlos A.
-  journal: "PLOS ONE (under revision)"
-  year: 2025
+  journal: "PLOS ONE"
+  year: 2026
