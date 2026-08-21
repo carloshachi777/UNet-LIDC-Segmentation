@@ -1,0 +1,4 @@
+split,total_slices,positive_slices,unique_patients,unique_scans,negative_slices,positive_fraction
+test,16893,1142,74,74,15751,0.0676019653110756
+train,85439,5379,349,350,80060,0.06295719753274266
+validation,17484,1195,75,76,16289,0.06834820407229467
