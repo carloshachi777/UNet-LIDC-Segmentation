@@ -28,3 +28,9 @@ venv/
 # Sensitive
 *.dcm
 *.dicom
+
+*.keras
+models/**/*.keras
+
+.venv/
+processed/
