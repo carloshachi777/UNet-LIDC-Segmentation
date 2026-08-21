@@ -50,8 +50,8 @@ The reference experiment uses a fixed cohort-selection seed and a separate run s
 | Partitioning | Patient-level |
 | Split ratio | Approximately 70% / 15% / 15% |
 | Training batch size | 8 |
-| Positive training fraction | 0.50 |
-| Training steps per epoch | 400 |
+| Positive training fraction | 0.75 |
+| Training steps per epoch | 500 |
 | Loss | Focal Tversky loss |
 | Optimizer | Adam |
 | Threshold selection | Validation set only |
@@ -183,7 +183,7 @@ each batch contains approximately:
 Therefore, each epoch processes:
 
 ```text
-400 batches × 8 slices = 3,200 sampled training slices
+500 batches × 8 slices = 4,000 sampled training slices
 ```
 
 Sampling is performed from the complete training positive and negative pools rather than permanently discarding negative slices.
