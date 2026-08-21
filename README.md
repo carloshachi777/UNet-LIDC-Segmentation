@@ -168,15 +168,16 @@ With the default configuration:
 
 ```text
 BATCH_SIZE = 8
-TRAIN_POSITIVE_FRACTION = 0.50
-TRAIN_STEPS_PER_EPOCH = 400
+TRAIN_POSITIVE_FRACTION = 0.75
+TRAIN_STEPS_PER_EPOCH = 500
 ```
 
 each batch contains approximately:
 
 ```text
-4 positive slices
-4 negative slices
+6 positive slices
+2 negative slices
+500 batches × 8 slices = 4,000 sampled training slices
 ```
 
 Therefore, each epoch processes:
