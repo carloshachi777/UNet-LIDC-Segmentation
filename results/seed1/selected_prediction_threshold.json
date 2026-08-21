@@ -1,0 +1,11 @@
+{
+  "selection_dataset": "positive validation slices only",
+  "selection_metric": "mean per-slice Dice",
+  "selected_threshold": 0.05,
+  "validation_mean_dice": 0.4377073936618727,
+  "validation_median_dice": 0.4939024324769484,
+  "validation_mean_iou": 0.35398232341832053,
+  "validation_mean_precision": 0.44910358438884757,
+  "validation_mean_recall": 0.5164702056564311,
+  "validation_detection_rate": 0.6787658802177858
+}

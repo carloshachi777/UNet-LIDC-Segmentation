@@ -1,0 +1,2 @@
+threshold,n_positive_test_slices,mean_dice,median_dice,mean_iou,mean_precision,mean_recall,mean_specificity,detected_slices,detection_rate
+0.05,1268,0.3887509873100718,0.3576759052782937,0.31518092395938907,0.3928084642259319,0.4692229415620748,0.9997790573487447,768,0.6056782334384858
