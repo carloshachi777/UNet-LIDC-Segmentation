@@ -1,0 +1,15 @@
+{
+  "input_shape": [
+    256,
+    256,
+    1
+  ],
+  "base_filters": 32,
+  "depth": 4,
+  "dropout_encoder": 0.1,
+  "dropout_bottleneck": 0.3,
+  "batch_normalization": true,
+  "kernel_initializer": "he_normal",
+  "output_channels": 1,
+  "output_activation": "sigmoid"
+}

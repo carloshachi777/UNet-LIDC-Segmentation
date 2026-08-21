@@ -1,0 +1,14 @@
+{
+  "seed": 42,
+  "image_height": 256,
+  "image_width": 256,
+  "channels": 1,
+  "batch_size": 8,
+  "training_positive_fraction": 0.5,
+  "positive_slices_per_batch": 4,
+  "negative_slices_per_batch": 4,
+  "training_steps_per_epoch": 400,
+  "validation_distribution": "natural",
+  "test_distribution": "natural",
+  "augmentation": "none_initial_baseline"
+}
