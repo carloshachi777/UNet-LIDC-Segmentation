@@ -9,8 +9,11 @@ Expected local structure:
 models/
 
 ├── seed1/
+
 │   └── best_plos_2d_unet.keras
+
 ├── seed2/
 │   └── best_plos_2d_unet.keras
+
 └── seed42/
     └── best_plos_2d_unet.keras
