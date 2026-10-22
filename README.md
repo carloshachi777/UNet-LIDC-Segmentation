@@ -276,12 +276,14 @@ UNet-LIDC-Segmentation/
 │       └── anonymized PNG examples
 │
 ├── notebooks/
+│   ├── README.md
 │   ├── 01_Preprocessing.ipynb
 │   ├── 02_UNet_Training.ipynb
 │   ├── 03_UNet_Evaluation.ipynb
 │   ├── 01B_Seed_Sensitivity_Splits.ipynb
 │   ├── 02B_Seed_Sensitivity_Training.ipynb
 │   └── 03B_Seed_Sensitivity_Evaluation.ipynb
+│   └── cohort_selection_and_table1_audit.ipynb
 │
 ├── metadata/
 │   ├── cohort/
