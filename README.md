@@ -288,6 +288,10 @@ UNet-LIDC-Segmentation/
 │   ├── seed1/
 │   ├── seed2/
 │   └── seed42/
+│   └── lidc_annotation_inventory.csv
+│   └── lidc_download_inventory.csv
+│   └── processed_dataset_report.csv
+│   └── selected_500_scan_cohort_seed42.csv
 │
 ├── splits/
 │   ├── seed1/
@@ -303,10 +307,6 @@ UNet-LIDC-Segmentation/
 │   ├── seed1/
 │   ├── seed2/
 │   └── seed42/
-│   └── lidc_annotation_inventory.csv
-│   └── lidc_download_inventory.csv
-│   └── processed_dataset_report.csv
-│   └── selected_500_scan_cohort_seed42.csv
 │
 ├── figures/
 │   ├── seed1/
