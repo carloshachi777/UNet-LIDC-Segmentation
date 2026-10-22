@@ -1,11 +1,11 @@
+# Reported results were produced with these versions on an Apple M4 workstation.
 numpy==1.26.4
-scipy
-matplotlib
-pydicom
-pylidc
-scikit-learn
 tensorflow==2.21.0
-tqdm
-pillow
-seaborn
 pandas
+scipy
+opencv-python
+pylidc
+pydicom
+matplotlib
+h5py
+jupyter

@@ -1,36 +1,18 @@
-# Python
+# Processed imaging archive (~24 GB) and trained checkpoints (~93 MB each)
+processed/
+masks/
+models/**/*.keras
+models/**/*.h5
+*.npz
+*.npy
+
+# Environments and caches
+.venv/
 __pycache__/
 *.pyc
-*.pyo
-
-# Jupyter
 .ipynb_checkpoints/
 
-# Models & logs
-*.h5
-*.pth
-results/logs/
-results/models/
-
-# OS files
+# OS and editor cruft
 .DS_Store
-
-# Data
-data/LIDC-IDRI/
-data/*.npy
-data/*.npz
-
-# Virtual env
-env/
-venv/
-*.swp
-
-# Sensitive
-*.dcm
-*.dicom
-
-*.keras
-models/**/*.keras
-
-.venv/
-processed/
+._*
+.idea/
