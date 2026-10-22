@@ -310,10 +310,7 @@ UNet-LIDC-Segmentation/
 │   └── seed42/
 │
 ├── src/
-│   ├── dataloader.py
-│   ├── model_unet.py
-│   ├── metrics.py
-│   └── train.py
+│   ├── unet_pipeline.py
 │
 ├── requirements.txt
 ├── LICENSE
