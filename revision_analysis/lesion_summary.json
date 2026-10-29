@@ -1,0 +1,26 @@
+{
+  "n_lesions_total": 226,
+  "n_lesions_evaluated": 212,
+  "lesion_volume_median": 41.5,
+  "lesion_volume_iqr": [
+    21.0,
+    112.5
+  ],
+  "lesion_volume_range": [
+    5,
+    4250
+  ],
+  "lesion_nslices_median": 4.0,
+  "lesion_nslices_iqr": [
+    3.0,
+    7.0
+  ],
+  "lesion_nslices_max": 27,
+  "lesion_dice_mean": 0.44714817607874746,
+  "lesion_dice_median": 0.46028091181211145,
+  "lesion_detection_rate": 0.8820754716981132,
+  "slices_below_half_max_cross_section": 0.2679509632224168,
+  "slices_below_quarter_max": 0.11033274956217162,
+  "in_largest_quartile_lesions_slices_in_smallest_area_tertile": 0.0472972972972973,
+  "corr_slice_area_vs_lesion_volume_spearman": 0.7934735624811965
+}

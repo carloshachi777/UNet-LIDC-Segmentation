@@ -29,7 +29,7 @@ Running it verifies that the architecture it defines has the 7,768,353
 parameters reported in the manuscript:
 
 ```bash
-python src/unet_pipeline.py
+python3 src/unet_pipeline.py
 ```
 
 > **Note on earlier versions of this repository.** `src/` previously contained
@@ -39,6 +39,43 @@ python src/unet_pipeline.py
 > reported experiments, and `train.py` even retained a Colab `%%writefile`
 > directive. They did not produce any reported result and have been removed to
 > eliminate the contradiction.
+
+## Revision analyses
+
+`revision_analysis/` holds the analyses added during peer review, with their own
+[README](revision_analysis/README.md) mapping each script to the quantity it
+produces. None of them trains a model or changes a reported result: they
+re-analyse the reference annotations, recompute statistics from the committed
+per-slice metrics, or evaluate the existing checkpoints on test slices that were
+always inside the held-out sets.
+
+Four of them need nothing beyond this repository and regenerate their committed
+JSON summaries, with every reported statistic identical (four p-values that the
+manuscript does not report may vary in their final digits across SciPy builds;
+see `revision_analysis/README.md`):
+
+```bash
+python3 revision_analysis/revision_statistics.py      # analysis_summary.json
+python3 revision_analysis/multiseed_stability.py      # multiseed_summary.json
+python3 revision_analysis/clustered_size_inference.py # clustered_size_summary.json
+```
+
+(`lesion_geometry_analysis.py` also needs the `processed/` archive, since it
+reads the consensus masks, but it runs no model.)
+
+Each writes its output beside the committed copy, so a mismatch is a one-line
+`diff` away. All four were verified to produce identical results whether run
+from a clone, where seed-42 files sit under `metadata/seed42/` and
+`results/seed42/`, or from a working tree where they sit at the top level;
+`revision_analysis/_paths.py` resolves both layouts.
+
+The whole-test-set predictions released in this round deserve a specific note.
+`results/seed*/all_test_slice_predictions.csv` scores **every** test slice, not
+only the nodule-positive ones, giving per-slice predicted area and the full
+confusion matrix. These are what the reported false-positive behaviour on
+nodule-free slices is computed from, and they can be re-aggregated without
+rerunning any model. `results/seed*/lesion_level_recall.csv` does the same at the
+level of three-dimensional connected components of the reference masks.
 
 ## What reproduces with no download at all
 
@@ -65,7 +102,10 @@ ALL COHORT AND TABLE 1 AUDIT ASSERTIONS PASSED
 
 The per-slice test metrics in `results/seed*/` likewise support re-deriving every
 reported performance number, confidence interval and figure without the imaging
-data, since they contain the full confusion matrix of each evaluated slice.
+data, since they contain the full confusion matrix of each evaluated slice. This
+now covers the whole test set rather than its nodule-positive part: see
+`all_test_slice_predictions.csv` and `lesion_level_recall.csv` in each seed
+directory, and `results/negative_slice_summary.json` for the per-run summary.
 
 ## What requires the LIDC-IDRI imaging data
 

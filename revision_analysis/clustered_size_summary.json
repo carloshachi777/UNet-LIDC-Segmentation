@@ -1,0 +1,37 @@
+{
+  "n_slices": 1142,
+  "n_patients": 74,
+  "n_bootstrap": 2000,
+  "spearman_rho": 0.4333284103497424,
+  "spearman_p_naive": 1.782051912513058e-53,
+  "mw_p_naive": 3.305300329191184e-22,
+  "rank_biserial": 0.3686587591240875,
+  "median_size_detected": 18.0,
+  "median_size_missed": 8.0,
+  "spearman_rho_patient_level": 0.37318483767794813,
+  "spearman_p_patient_level": 0.00105748301829464,
+  "n_patient_units": 74,
+  "boot_rho_ci": [
+    0.26505892802985814,
+    0.5725809832232635
+  ],
+  "boot_rho_median": 0.4378332346343497,
+  "boot_rb_ci": [
+    0.15251345572369687,
+    0.5527785791312333
+  ],
+  "boot_rb_median": 0.37676374457750983,
+  "boot_diff_median_ci": [
+    6.0,
+    17.0
+  ],
+  "boot_diff_median_median": 10.0,
+  "boot_tertile_gap_ci": [
+    0.20074627382479968,
+    0.4400781354259787
+  ],
+  "boot_tertile_gap_median": 0.32910203884077194,
+  "boot_rho_excludes_zero": true,
+  "boot_rb_excludes_zero": true,
+  "boot_tertile_gap_excludes_zero": true
+}
