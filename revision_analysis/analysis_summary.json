@@ -31,7 +31,7 @@
   "mwu_clusters_U": 163412.5,
   "mwu_annotations_p": 1.5520459148803103e-14,
   "ks_clusters_D": 0.2631578947368421,
-  "ks_clusters_p": 6.250774104669588e-16,
+  "ks_clusters_p": 6.250774104669589e-16,
   "dicom_cohort_median": 443.0,
   "dicom_nonsel_median": 409.0,
   "mwu_dicom_p": 0.6124112723344883,
@@ -69,7 +69,7 @@
     40.0
   ],
   "ks_train_test_size_D": 0.028003597046176526,
-  "ks_train_test_size_p": 0.441779163116333,
+  "ks_train_test_size_p": 0.44177916311633275,
   "processed_scans": 500,
   "pos_slices_per_scan_median": 11.0,
   "mask_voxels_per_scan_median": 178.0,
@@ -131,7 +131,7 @@
   ],
   "boot_global_dice_sd": 0.04947941203491543,
   "spearman_rho": 0.4333284103497424,
-  "spearman_p": 1.7820519125129797e-53,
+  "spearman_p": 1.782051912513058e-53,
   "n_detected": 822,
   "n_missed": 320,
   "median_size_detected": 18.0,
@@ -191,6 +191,6 @@
   "mwu_clusters_elig_p": 0.6958941195434456,
   "mwu_ann_elig_p": 0.6167712649790784,
   "ks_clusters_elig_D": 0.03338624338624339,
-  "ks_clusters_elig_p": 0.961337668863771,
+  "ks_clusters_elig_p": 0.9613376688637704,
   "rank_biserial_detected_larger": 0.3686587591240875
 }
