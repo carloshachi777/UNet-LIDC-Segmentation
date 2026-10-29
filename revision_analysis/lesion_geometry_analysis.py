@@ -1,8 +1,30 @@
-"""Lesion-level (3D) analysis of the reference run, seed 42.
+"""Lesion geometry for the reference run (seed 42).
 
-Addresses Reviewer 3 point 2: slice-level foreground area is a cross-section,
-not the size of a nodule. Here each connected 3D component of the consensus
-mask is treated as one lesion.
+Addresses the reviewer point that slice-level foreground area is a cross-section,
+not the size of a nodule. Each connected 3D component of the consensus mask is
+treated as one lesion.
+
+SCOPE. This script characterises the reference ANNOTATIONS and the relationship
+between a slice and its parent lesion. It computes no lesion-level performance
+figure. Lesion detection and recall are reported by
+`negative_slice_and_lesion_eval.py`, which intersects each lesion with the
+prediction voxel by voxel and therefore scores every component exactly.
+
+The two analyses use different machinery and must not be conflated:
+
+  here                    each evaluated slice is attributed to the single
+                          lesion holding most of its foreground, which is
+                          adequate for geometry but leaves 14 of the 226
+                          components unattributed, because they share a slice
+                          with a larger lesion and lose that comparison
+
+  the exact analysis      each lesion is intersected with the prediction
+                          directly; no attribution is involved and all 226
+                          components are scored
+
+Geometry below is therefore reported over ALL components, not over the
+attributed subset, so that it matches the population used for the reported
+lesion-level performance.
 """
 import json
 import numpy as np, pandas as pd
@@ -89,16 +111,21 @@ les_eval = les.merge(agg, on=["patient_id", "scan_id", "lesion_id"], how="inner"
 
 out = {}
 out["n_lesions_total"] = int(len(les))
-out["n_lesions_evaluated"] = int(len(les_eval))
-out["lesion_volume_median"] = float(les_eval.volume_vox.median())
-out["lesion_volume_iqr"] = [float(les_eval.volume_vox.quantile(.25)), float(les_eval.volume_vox.quantile(.75))]
-out["lesion_volume_range"] = [int(les_eval.volume_vox.min()), int(les_eval.volume_vox.max())]
-out["lesion_nslices_median"] = float(les_eval.n_slices.median())
-out["lesion_nslices_iqr"] = [float(les_eval.n_slices.quantile(.25)), float(les_eval.n_slices.quantile(.75))]
-out["lesion_nslices_max"] = int(les_eval.n_slices.max())
-out["lesion_dice_mean"] = float(les_eval.lesion_dice.mean())
-out["lesion_dice_median"] = float(les_eval.lesion_dice.median())
-out["lesion_detection_rate"] = float(les_eval.lesion_detected.mean())
+out["n_lesions_with_attributed_slice"] = int(len(les_eval))
+out["attribution_note"] = (
+    "Lesion-level detection and recall are NOT computed here; see "
+    "results/lesion_level_recall.csv, produced by negative_slice_and_lesion_eval.py, "
+    "which scores all components by exact voxel intersection."
+)
+
+# geometry over ALL components, matching the population used for reported
+# lesion-level performance
+out["lesion_volume_median"] = float(les.volume_vox.median())
+out["lesion_volume_iqr"] = [float(les.volume_vox.quantile(.25)), float(les.volume_vox.quantile(.75))]
+out["lesion_volume_range"] = [int(les.volume_vox.min()), int(les.volume_vox.max())]
+out["lesion_nslices_median"] = float(les.n_slices.median())
+out["lesion_nslices_iqr"] = [float(les.n_slices.quantile(.25)), float(les.n_slices.quantile(.75))]
+out["lesion_nslices_max"] = int(les.n_slices.max())
 
 # the reviewer's specific point, quantified
 out["slices_below_half_max_cross_section"] = float((sl.area_fraction_of_max < 0.5).mean())
@@ -109,7 +136,10 @@ out["in_largest_quartile_lesions_slices_in_smallest_area_tertile"] = float(
 out["corr_slice_area_vs_lesion_volume_spearman"] = float(
     sl[["slice_area", "lesion_volume_vox"]].corr(method="spearman").iloc[0, 1])
 
-les_eval.to_csv(OUTPUT / "lesion_level_metrics_seed42.csv", index=False)
+les_eval.drop(columns=[c for c in ["tp", "fp", "fn", "mean_slice_dice",
+                                   "lesion_dice", "lesion_detected", "slices_detected"]
+                       if c in les_eval], errors="ignore").to_csv(
+    OUTPUT / "lesion_geometry_seed42.csv", index=False)
 sl.to_csv(OUTPUT / "slice_to_lesion_seed42.csv", index=False)
 json.dump(out, open(OUTPUT / "lesion_summary.json", "w"), indent=2)
 for k, v in out.items():
